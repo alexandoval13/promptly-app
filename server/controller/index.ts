@@ -1,3 +1,11 @@
-import Alien_query from './alien_con';
+import AlienController from './alien_con';
+import ThoughtController from './thought_con';
+import TimeController from './time_con';
+import TimeTypeController from './timeType_con';
 
-export default { Alien_query };
+export {
+  AlienController,
+  ThoughtController,
+  TimeController,
+  TimeTypeController,
+};

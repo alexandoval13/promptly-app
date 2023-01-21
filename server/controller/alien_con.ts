@@ -1,11 +1,16 @@
-import { Alien } from '../models';
+import { AlienQuery } from '../models';
 
-const selectAllAliens = (req, res) => {
-  console.log('Selecting all aliens');
-  Alien.selectAll(req, (data) => {
-    console.log({ data });
+const selectAllAliens = (req: any, res: any) => {
+  AlienQuery.selectAll(req, (data: any) => {
     res.send({ data });
   });
 };
 
-export { selectAllAliens };
+const selectAlienById = (req: any, res: any) => {
+  console.log({ controller: 'alien con' });
+  AlienQuery.selectByAlienId(req, (data: any) => {
+    res.send({ data });
+  });
+};
+
+export default { selectAllAliens, selectAlienById };
