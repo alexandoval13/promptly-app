@@ -5,6 +5,9 @@
  * This is based on looking at past work from the bootcamp
  */
 
-import Alien from './alien_mod';
+import { AlienQuery } from './alien_mod';
+import { ThoughtQuery } from './thought_mod';
+import { TimeQuery } from './time_mod';
+import { TimeTypeQuery } from './timeType_mod';
 
-export { Alien };
+export { AlienQuery, ThoughtQuery, TimeQuery, TimeTypeQuery };

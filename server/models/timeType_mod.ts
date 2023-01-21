@@ -2,38 +2,36 @@ import db from '../db/postgres';
 
 const selectAll = async (req: any, cb: Function) => {
   try {
-    const data = await db.query(`SELECT * FROM alien;`);
+    const data = await db.query(`SELECT * FROM space_time_types;`);
     cb(data.rows);
   } catch (error) {
     console.log({ error });
   }
 };
 
-const selectByAlienId = async (req: any, cb: Function) => {
+const selectById = async (req: any, cb: Function) => {
   try {
     const id = req.params['id'];
-    console.log({ id });
     if (!id || typeof id === 'undefined') {
-      cb('Invalid login_id provided');
+      cb('Invalid type id provided');
       return;
     } else {
       const data = await db.query(
         `
-        SELECT * FROM alien
+        SELECT * FROM space_time_types
         WHERE id = $1
-        LIMIT 1
       `,
         [id]
       );
-      const user = data.rows[0];
-      cb(user);
+      const timeType = data.rows[0];
+      cb(timeType);
     }
   } catch (error) {
     console.log({ error });
   }
 };
 
-export const AlienQuery = {
+export const TimeTypeQuery = {
   selectAll,
-  selectByAlienId,
+  selectById,
 };
