@@ -1,7 +1,23 @@
 import React from 'react';
+import { Alien } from '../types/alien';
 
-const ControlBoard = () => {
-  return <div>THIS IS THE CONTROL BOARD</div>;
+interface ControlBoardProps {
+  alien: Alien;
+}
+
+const ControlBoard = (props: ControlBoardProps) => {
+  const {
+    alien: { settings },
+  } = props;
+
+  return (
+    <div>
+      <ul>
+        <li>User Info/Edit</li>
+        <li>User Data Bank: "Galaxy</li>
+      </ul>
+    </div>
+  );
 };
 
 export default ControlBoard;

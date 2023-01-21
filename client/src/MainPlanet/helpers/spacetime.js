@@ -9,6 +9,7 @@ export const getCurrentDate = () => {
 
 export const determineDaytime = () => {
   const sunlight = getCurrentDate().daylight();
+  console.log({ sunlight });
   return sunlight.current.status;
 };
 
