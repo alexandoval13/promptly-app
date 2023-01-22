@@ -12,7 +12,7 @@ const selectAll = async (req: any, cb: Function) => {
 const selectById = async (req: any, cb: Function) => {
   try {
     const id = req.params['id'];
-    console.log({ id });
+
     if (!id || typeof id === 'undefined') {
       cb('Invalid thought id provided');
       return;
