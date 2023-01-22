@@ -1,25 +1,35 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import MainPlanet from './MainPlanet';
+import { Alien } from './MainPlanet/types/alien';
 
 function App() {
-  const [data, setData] = React.useState(null);
+  const [alien, setAlien] = useState<Alien | null>(null);
 
-  React.useEffect(() => {
-    axios.get('/api').then((res) => {
-      const { message } = res.data;
-      setData(message);
+  //* dev purposes only
+  const tempID = 1;
+
+  useEffect(() => {
+    //* dev purposes only
+    axios.get(`/api/alien/${tempID}`).then((res) => {
+      const { data } = res.data;
+      setAlien(data);
     });
   }, []);
 
-  return (
-    <div className="App">
-      <header className="App-header">
-        <p>{!data ? 'Loading...' : data}</p>
-      </header>
-      <MainPlanet />
-    </div>
-  );
+  if (alien && typeof alien !== 'undefined') {
+    return (
+      <div className="App">
+        <MainPlanet alien={alien} />
+      </div>
+    );
+  } else {
+    return (
+      <div>
+        <header>Awaiting takeoff</header>
+      </div>
+    );
+  }
 }
 
 export default App;
