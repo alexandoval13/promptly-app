@@ -10,6 +10,7 @@ const ControlBoard = (props: ControlBoardProps) => {
     alien: { settings },
   } = props;
 
+  console.log({ settings });
   return (
     <div>
       <ul>

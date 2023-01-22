@@ -1,5 +1,5 @@
 import React from 'react';
-import { formatGreeting } from '../../helpers/spacetime';
+import { formatGreeting } from '../../helpers/spacetime-helpers';
 
 interface GreetingsProps {
   name: String;
