@@ -7,7 +7,6 @@ const selectAllAliens = (req: any, res: any) => {
 };
 
 const selectAlienById = (req: any, res: any) => {
-  console.log({ controller: 'alien con' });
   AlienQuery.selectByAlienId(req, (data: any) => {
     res.send({ data });
   });

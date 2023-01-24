@@ -1,5 +1,5 @@
 import express from 'express';
-// import bodyParser from 'body-parser';
+import bodyParser from 'body-parser';
 const app = express();
 
 import {
@@ -11,8 +11,8 @@ import {
 } from './routes/router';
 
 // app.use(express.static(__dirname + '/../client/dist'));
-// app.use(bodyParser.urlencoded({ extended: true }));
-// app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 // app.use(express.urlencoded({ extended: true }));
 
 app.use('/api/alien', alienRoutes);

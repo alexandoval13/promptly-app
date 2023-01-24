@@ -18,4 +18,15 @@ const selectTimesByAlienId = (req: any, res: any) => {
   });
 };
 
-export default { selectAllAlienTimes, selectTimesByAlienId, selectTimeById };
+const addTimeByAlienId = (req: any, res: any) => {
+  TimeQuery.addNewTime(req, (data: any) => {
+    res.send({ data });
+  });
+};
+
+export default {
+  selectAllAlienTimes,
+  selectTimesByAlienId,
+  selectTimeById,
+  addTimeByAlienId,
+};

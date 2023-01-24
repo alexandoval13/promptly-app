@@ -55,8 +55,31 @@ const selectByUserId = async (req: any, cb: Function) => {
   }
 };
 
+const addNewTime = async (req: any, cb: Function) => {
+  try {
+    const userId = req.params['user_id'];
+    const {
+      body: { description, details, commitment, time, difficulty, type },
+    } = req;
+    if (type === 'taking-space' && description) {
+      const data = await db.query(
+        `
+          INSERT INTO space_time(user_id, ex_name, ex_description, space_time_types, time_commitment, difficulty)
+          VALUES($1, $2, $3, $4, $5, $6);
+        `,
+        [userId, description, details, 1, commitment, difficulty]
+      );
+
+      cb(data);
+    }
+  } catch (error) {
+    console.log({ error });
+  }
+};
+
 export const TimeQuery = {
   selectAll,
   selectById,
   selectByUserId,
+  addNewTime,
 };

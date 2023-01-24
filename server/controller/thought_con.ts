@@ -21,7 +21,6 @@ const selectThoughtsByAlienId = (req: any, res: any) => {
 
 const selectRandomThoughtByAlienId = (req: any, res: any) => {
   ThoughtQuery.selectByUserId(req, (data: any) => {
-    console.log({ data });
     const length = data.length;
 
     const index = getRandomInt(length);
@@ -30,9 +29,18 @@ const selectRandomThoughtByAlienId = (req: any, res: any) => {
   });
 };
 
+const addThoughtByAlienId = (req: any, res: any) => {
+  ThoughtQuery.addNewThought(req, (data: any) => {
+    res.send({ data });
+  });
+
+  res.send({ done: 'done' });
+};
+
 export default {
   selectAllAlienThoughts,
   selectThoughtById,
   selectThoughtsByAlienId,
   selectRandomThoughtByAlienId,
+  addThoughtByAlienId,
 };

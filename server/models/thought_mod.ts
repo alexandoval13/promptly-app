@@ -36,7 +36,6 @@ const selectById = async (req: any, cb: Function) => {
 const selectByUserId = async (req: any, cb: Function) => {
   try {
     const id = req.params['user_id'];
-    console.log({ id });
     if (!id || typeof id === 'undefined') {
       cb('Invalid user id provided');
       return;
@@ -56,8 +55,33 @@ const selectByUserId = async (req: any, cb: Function) => {
   }
 };
 
+const addNewThought = async (req: any, cb: Function) => {
+  try {
+    const userId = req.params['user_id'];
+    const {
+      body: { description, type },
+    } = req;
+    if (type === 'thought' && description) {
+      // write to db
+
+      const data = await db.query(
+        `
+          INSERT INTO thought_space(user_id, thought)
+          VALUES($1, $2);
+        `,
+        [userId, description]
+      );
+
+      cb(data);
+    }
+  } catch (error) {
+    console.log({ error });
+  }
+};
+
 export const ThoughtQuery = {
   selectAll,
   selectById,
   selectByUserId,
+  addNewThought,
 };
