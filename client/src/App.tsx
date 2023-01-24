@@ -3,6 +3,8 @@ import axios from 'axios';
 import MainPlanet from './MainPlanet';
 import { Alien } from './MainPlanet/types/alien';
 
+import { Grid } from './design-system';
+
 function App() {
   const [alien, setAlien] = useState<Alien | null>(null);
 
@@ -11,7 +13,7 @@ function App() {
 
   useEffect(() => {
     //* dev purposes only
-    axios.get(`/api/alien/${tempID}`).then((res) => {
+    axios.get(`/alien/${tempID}`).then((res) => {
       const { data } = res.data;
       setAlien(data);
     });
@@ -19,15 +21,15 @@ function App() {
 
   if (alien && typeof alien !== 'undefined') {
     return (
-      <div className="App">
+      <Grid className="App">
         <MainPlanet alien={alien} />
-      </div>
+      </Grid>
     );
   } else {
     return (
-      <div>
+      <Grid>
         <header>Awaiting takeoff</header>
-      </div>
+      </Grid>
     );
   }
 }

@@ -1,6 +1,6 @@
 import React from 'react';
-import { getRandomInt } from '../../helpers/getRandomInt';
-import { Time } from '../../types/time';
+import { getRandomInt } from '../../../helpers/getRandomInt';
+import { Time } from '../../../types/time';
 
 interface SpaceExplorationProps {
   times: Time[] | null;
@@ -24,7 +24,7 @@ const SpaceExploration = (props: SpaceExplorationProps) => {
       </div>
     );
   } else {
-    return <>No Times Yet</>;
+    return <div>No Times Yet</div>;
   }
 };
 

@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { Alien } from '../types/alien';
 import Greetings from './Greetings';
 import Interactions from './Interactions';
-import { Thought } from '../types/thought';
-import { Time } from '../types/time';
+import { Alien } from '../../types/alien';
+import { Thought } from '../../types/thought';
+import { Time } from '../../types/time';
+import ThoughtRecorder from './Interactions/AddInteractionsForm';
 
 interface SpaceStationProps {
   alien: Alien;
@@ -16,13 +17,13 @@ function SpaceStation(props: SpaceStationProps) {
   const [times, setTimes] = useState<Time[] | null>(null);
 
   useEffect(() => {
-    axios.get(`/api/thought/random/${alien.id}`).then((res) => {
+    axios.get(`/thought/random/${alien.id}`).then((res) => {
       const { data } = res.data;
       const thought = data[0];
       setThought(thought);
     });
 
-    axios.get(`api/time/alien/${alien.id}`).then((res) => {
+    axios.get(`/time/alien/${alien.id}`).then((res) => {
       const { data } = res.data;
       setTimes(data);
     });
@@ -33,6 +34,7 @@ function SpaceStation(props: SpaceStationProps) {
       <div> Space Station</div>
       <Greetings name={alien['first_name']} />
       <Interactions thought={thought} times={times} />
+      <ThoughtRecorder alien={alien} />
     </div>
   );
 }

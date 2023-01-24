@@ -1,6 +1,6 @@
 import React from 'react';
-import { Thought } from '../../types/thought';
-import { Time } from '../../types/time';
+import { Thought } from '../../../types/thought';
+import { Time } from '../../../types/time';
 import SpaceExploration from './SpaceExploration';
 import TimeTravelThoughts from './TimeTravelThoughts';
 

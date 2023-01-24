@@ -1,6 +1,6 @@
 import spacetime from 'spacetime';
 import daylight from 'spacetime-daylight';
-import { DAYTIME_BREAKS } from '../const/daytime-config';
+import { DAYTIME_BREAKS } from '../constants/daytime-config';
 
 spacetime.extend(daylight);
 

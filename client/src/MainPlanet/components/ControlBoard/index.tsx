@@ -1,5 +1,5 @@
 import React from 'react';
-import { Alien } from '../types/alien';
+import { Alien } from '../../types/alien';
 
 interface ControlBoardProps {
   alien: Alien;

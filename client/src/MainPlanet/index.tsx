@@ -1,6 +1,6 @@
 import React from 'react';
-import ControlBoard from './ControlBoard';
-import SpaceStation from './SpaceStation';
+import ControlBoard from './components/ControlBoard';
+import SpaceStation from './components/SpaceStation';
 import { Alien } from './types/alien';
 
 interface MainPlanetProps {
