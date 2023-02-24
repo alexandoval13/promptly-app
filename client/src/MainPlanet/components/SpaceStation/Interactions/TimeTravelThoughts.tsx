@@ -1,12 +1,20 @@
 import React from 'react';
 import { Thought } from '../../../types/thought';
 
+import { Button } from '../../../../design-system';
+import { FormTypes } from '../../../constants/forms';
+
 interface TimeTravelThoughtsProps {
   thought: Thought | null;
+  handleOpenForm: (name: FormTypes) => void;
 }
 
 const TimeTravelThoughts = (props: TimeTravelThoughtsProps) => {
-  const { thought } = props;
+  const { thought, handleOpenForm } = props;
+
+  const handleClick = () => {
+    handleOpenForm(FormTypes.THOUGHT);
+  };
 
   return (
     <div>
